@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import pyodbc
-import jinja2
+from jinja2 import Environment, FileSystemLoader
 
 app = Flask(__name__)
 
@@ -48,9 +48,11 @@ def render_data():
     # Retrieve data from the database
     data = get_data()
 
+    environment = Environment(loader=FileSystemLoader(""))
+    template = environment.get_template("current-applicants.html")
 
     # Render the data in the current-applicants.html template
-    return render_template('current-applicants.html', data=data)
+    return render_template(template, data=data)
 
 if __name__ == '__main__':
     app.run(host="localhost", port= 8000, debug=True)

@@ -6,7 +6,6 @@ function filterSort(option){
 function filterOffice(option){
     let curr_selection = document.getElementById('office-selection');
     curr_selection.textContent=option;
-    // ok now tell the python to give me applicants from curr_selection
 }
 
 function filterStatus(option){
